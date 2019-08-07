@@ -6,25 +6,15 @@ import QuestionOneType from "./QuestionsCards/QuestionTypeOne/question-type-one"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
-  const [questionNum, nextQuestion] = useState(0)
-  const { questions } = store
+  const { questions, currentQuestion } = store
   const renderLoading = () => {
     return <h2>LOADIN</h2>
-  }
-
-  const renderNextButton = () => {
-    return (
-      <button onClick={() => nextQuestion(questionNum + 1)}>
-        NEXT QUESTION
-      </button>
-    )
   }
 
   const renderQuestion = (q: any) => {
     return (
       <>
         <QuestionOneType country={q.country} answers={q.answers} />
-        {questionNum < questions.length - 1 ? renderNextButton() : null}
       </>
     )
   }
@@ -37,7 +27,7 @@ const Main: React.FC = observer(() => {
           {questions.length === 0 && store.loading
             ? renderLoading()
             : questions.length > 0
-            ? renderQuestion(questions[questionNum])
+            ? renderQuestion(questions[currentQuestion])
             : null}
         </div>
       </div>

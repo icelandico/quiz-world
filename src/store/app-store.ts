@@ -11,6 +11,7 @@ interface IStore {
   loading: boolean
   userAnswers: number[]
   questions: any[]
+  currentQuestion: number
 }
 
 export class QuizStore implements IStore {
@@ -21,6 +22,12 @@ export class QuizStore implements IStore {
   questions: any[] = []
 
   loading = false
+
+  currentQuestion = 0
+
+  nextQuestion() {
+    this.currentQuestion += 1
+  }
 
   fetchCountries() {
     fetch(`${PROXY_URL}${API_COUNTRIES}`, {
@@ -130,6 +137,7 @@ decorate(QuizStore, {
   loading: observable,
   countries: observable,
   questions: observable,
+  currentQuestion: observable,
   generateQuestionsStructure: action
 })
 

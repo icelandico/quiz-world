@@ -110,10 +110,15 @@ export class QuizStore implements IStore {
     const questionsTypes = this.generateQuestionsStructure()
     const questionsSet = async () => {
       return Promise.all(
-        questionsTypes.map((el, idx) => this.generateQuestionTypeOne(idx))
+        questionsTypes.map((el, idx) =>
+          el === 1
+            ? this.generateQuestionTypeOne(idx)
+            : this.generateQuestionTypeTwo(idx)
+        )
       )
     }
     const q: any[] = await questionsSet()
+    console.log(q)
     this.questions = q
   }
 
@@ -129,6 +134,31 @@ export class QuizStore implements IStore {
       country: countriesSet[randomChoice].c
     }
     return questionObj
+  }
+
+  async generateQuestionTypeTwo(index: number) {
+    const countriesSet = await this.getCountriesPopulation()
+    const answers = countriesSet.map(element => element.c)
+    const correctIndex = this.defineBiggestPopul(countriesSet)
+    const questionObj = {
+      id: index,
+      type: 2,
+      answers,
+      correct: correctIndex,
+      country: countriesSet[correctIndex].c
+    }
+    return questionObj
+  }
+
+  defineBiggestPopul(countries: any[]) {
+    const sortByPopulation = [...countries].sort((a, b) =>
+      a.population < b.population ? 1 : -1
+    )
+    const maxPopulation = sortByPopulation[0].population
+    const index = countries.findIndex(
+      value => value.population === maxPopulation
+    )
+    return index
   }
 }
 

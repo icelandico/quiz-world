@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite"
 import ButtonContainer from "./ButtonContainer/button-container"
 import QuizStore from "../../store/app-store"
 import QuestionOneType from "./QuestionsCards/QuestionTypeOne/question-type-one"
+import QuestionTwoType from "./QuestionsCards/QuestionsTypeTwo/question-type-two"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
@@ -11,12 +12,24 @@ const Main: React.FC = observer(() => {
     return <h2>LOADIN</h2>
   }
 
-  const renderQuestion = (q: any) => {
+  const renderQuestionOne = (q: any) => {
     return (
       <>
         <QuestionOneType country={q.country} answers={q.answers} />
       </>
     )
+  }
+
+  const renderQuestionTwo = (q: any) => {
+    return (
+      <>
+        <QuestionTwoType answers={q.answers} />
+      </>
+    )
+  }
+
+  const renderQuestion = (q: any) => {
+    return q.type === 1 ? renderQuestionOne(q) : renderQuestionTwo(q)
   }
 
   return (

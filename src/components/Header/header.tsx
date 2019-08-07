@@ -1,10 +1,10 @@
-import React from "react"
-import "./App.css"
+import React from 'react'
+import { MainHeader } from './header-styles'
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header" />
+      <MainHeader />
     </div>
   )
 }

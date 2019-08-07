@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react"
 import Header from "./components/Header/header"
-import Main from "./components/Main/Main"
+import Main from "./components/Main/main"
 import { AppContainer } from "./app-styles"
 import QuizStore from "./store/app-store"
 

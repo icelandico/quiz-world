@@ -1,5 +1,9 @@
 import styled from "styled-components"
 
+export const ButtonDiv = styled.div`
+  margin: 0 auto;
+`
+
 export const StartButton = styled.button`
   padding: 1rem;
   background-color: #677db7;

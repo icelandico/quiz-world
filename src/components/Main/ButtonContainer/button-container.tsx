@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { observer } from "mobx-react-lite"
 import QuizStore from "../../../store/app-store"
-import { StartButton } from "./button-container-styles"
+import { ButtonDiv, StartButton } from "./button-container-styles"
 
 const ButtonContainer: React.FC = observer(() => {
   const store = useContext(QuizStore)
@@ -13,9 +13,9 @@ const ButtonContainer: React.FC = observer(() => {
   }
 
   return (
-    <div>
+    <ButtonDiv>
       <StartButton onClick={e => startQuiz(e)}>Start the Quiz</StartButton>
-    </div>
+    </ButtonDiv>
   )
 })
 

@@ -4,6 +4,7 @@ import ButtonContainer from "./ButtonContainer/button-container"
 import QuizStore from "../../store/app-store"
 import QuestionOneType from "./QuestionsCards/QuestionTypeOne/question-type-one"
 import QuestionTwoType from "./QuestionsCards/QuestionsTypeTwo/question-type-two"
+import { MainContent, QuestionsContainer } from "./main-styles"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
@@ -33,18 +34,18 @@ const Main: React.FC = observer(() => {
   }
 
   return (
-    <div>
+    <MainContent>
       <ButtonContainer />
-      <div>
+      <QuestionsContainer>
         <div>
           {questions.length === 0 && store.loading
             ? renderLoading()
             : questions.length > 0
-            ? renderQuestion(questions[currentQuestion])
-            : null}
+              ? renderQuestion(questions[currentQuestion])
+              : null}
         </div>
-      </div>
-    </div>
+      </QuestionsContainer>
+    </MainContent>
   )
 })
 

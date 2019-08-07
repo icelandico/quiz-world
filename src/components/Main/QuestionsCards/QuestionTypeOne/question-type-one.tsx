@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useContext } from "react"
 import {
   QuestionContainer,
   AnswersContainer,
@@ -23,9 +23,11 @@ const QuestionTypeOne: React.FC<IProps> = props => {
     <QuestionContainer>
       <QuestionTitle>What's the population of the {country}</QuestionTitle>
       <AnswersContainer>
-        {answers.map(answer => {
+        {answers.map((answer, idx) => {
           return (
-            <SingleAnswer onClick={handleNextQuestion}>{answer}</SingleAnswer>
+            <SingleAnswer key={idx} onClick={handleNextQuestion}>
+              {answer}
+            </SingleAnswer>
           )
         })}
       </AnswersContainer>

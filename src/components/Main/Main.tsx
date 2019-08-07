@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { observer } from "mobx-react-lite"
 import ButtonContainer from "./ButtonContainer/button-container"
 import QuizStore from "../../store/app-store"

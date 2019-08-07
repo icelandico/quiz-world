@@ -30,4 +30,9 @@ export const SingleAnswer = styled.div`
   width: 100px;
   font-size: 1.25rem;
   text-align: center;
+
+  &:hover {
+    background-color: #ccaa;
+    cursor: pointer;
+  }
 `

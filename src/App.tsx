@@ -9,7 +9,6 @@ const App: React.FC = () => {
 
   useEffect(() => {
     store.fetchCountries()
-    // store.generateQuestionsSet()
   }, [])
 
   return (

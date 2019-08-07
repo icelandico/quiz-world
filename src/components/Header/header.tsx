@@ -1,12 +1,12 @@
-import React from 'react'
-import { MainHeader } from './header-styles'
+import React from "react"
+import { MainHeader } from "./header-styles"
 
-const App: React.FC = () => {
+const Header: React.FC = () => {
   return (
-    <div className="App">
-      <MainHeader />
-    </div>
+    <header>
+      <MainHeader>World Population Quiz</MainHeader>
+    </header>
   )
 }
 
-export default App
+export default Header

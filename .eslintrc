@@ -28,6 +28,7 @@
     "global-require": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
     "import/no-named-as-default": 0,
+    "class-methods-use-this": "off",
     /**
      * @description rules of eslint official
      */

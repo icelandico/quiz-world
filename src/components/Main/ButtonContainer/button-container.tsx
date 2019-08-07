@@ -6,14 +6,15 @@ import { StartButton } from "./button-container-styles"
 const ButtonContainer: React.FC = observer(() => {
   const store = useContext(QuizStore)
 
-  const startQuiz = () => {
+  const startQuiz = (e: any) => {
+    e.preventDefault()
     store.changeLoadingState(true)
-    store.fetchCountries()
+    store.generateQuestionsSet()
   }
 
   return (
     <div>
-      <StartButton onClick={startQuiz}>Start the Quiz</StartButton>
+      <StartButton onClick={e => startQuiz(e)}>Start the Quiz</StartButton>
     </div>
   )
 })

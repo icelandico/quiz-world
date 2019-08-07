@@ -27,6 +27,7 @@
     "@typescript-eslint/no-use-before-define": "off",
     "global-require": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
+    "import/no-named-as-default": 0,
     /**
      * @description rules of eslint official
      */

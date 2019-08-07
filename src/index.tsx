@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker"
 import { QuizStore } from "./store/app-store"
 
 const Root = (
-  <Provider reposStore={QuizStore}>
+  <Provider quizStore={QuizStore}>
     <App />
   </Provider>
 )

@@ -26,6 +26,7 @@
     "no-shadow": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "global-require": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
     /**
      * @description rules of eslint official
      */

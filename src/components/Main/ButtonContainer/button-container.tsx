@@ -5,6 +5,7 @@ import { ButtonDiv, StartButton } from "./button-container-styles"
 
 const ButtonContainer: React.FC = observer(() => {
   const store = useContext(QuizStore)
+  const { quizStarted } = store
 
   const startQuiz = (e: any) => {
     e.preventDefault()
@@ -13,9 +14,13 @@ const ButtonContainer: React.FC = observer(() => {
     store.generateQuestionsSet()
   }
 
+  const buttonText = () => {
+    return quizStarted ? "Restart the Quiz" : "Start the Quiz"
+  }
+
   return (
     <ButtonDiv>
-      <StartButton onClick={e => startQuiz(e)}>Start the Quiz</StartButton>
+      <StartButton onClick={e => startQuiz(e)}>{buttonText()}</StartButton>
     </ButtonDiv>
   )
 })

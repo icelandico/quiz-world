@@ -7,17 +7,20 @@ import {
 import AnswerCard from "../AnswerCard/answer-card"
 
 interface IProps {
+  id: number
   answers: number[]
 }
 const QuestionTypeTwo: React.FC<IProps> = props => {
-  const { answers } = props
+  const { id, answers } = props
 
   return (
     <QuestionContainer>
       <QuestionTitle>Which country has the biggest population?</QuestionTitle>
       <AnswersContainer>
         {answers.map((answer, idx) => {
-          return <AnswerCard answer={answer} idx={idx} key={idx} />
+          return (
+            <AnswerCard questionId={id} answer={answer} idx={idx} key={idx} />
+          )
         })}
       </AnswersContainer>
     </QuestionContainer>

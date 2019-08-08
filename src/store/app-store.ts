@@ -19,11 +19,13 @@ export class QuizStore {
 
   countries: string[] = []
 
-  questions: any[] = []
+  questions: IQuestion[] = []
 
   loading: boolean = false
 
-  currentQuestion = 0
+  currentQuestion: number = 0
+
+  userScore: number = 0
 
   nextQuestion() {
     this.currentQuestion += 1
@@ -31,6 +33,12 @@ export class QuizStore {
 
   addUserAnswer(answer: number) {
     this.userAnswers.push(answer)
+  }
+
+  checkCorrect(qId: number, answer: number) {
+    if (this.questions[qId].correct === answer) {
+      this.userScore += 1
+    }
   }
 
   fetchCountries() {
@@ -122,6 +130,7 @@ export class QuizStore {
       )
     }
     const q: IQuestion[] = await questionsSet()
+    console.log(q)
     this.questions = q
   }
 
@@ -171,7 +180,8 @@ decorate(QuizStore, {
   countries: observable,
   questions: observable,
   currentQuestion: observable,
-  generateQuestionsStructure: action
+  generateQuestionsStructure: action,
+  addUserAnswer: action
 })
 
 export default createContext(new QuizStore())

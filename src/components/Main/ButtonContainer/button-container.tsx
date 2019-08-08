@@ -8,6 +8,7 @@ const ButtonContainer: React.FC = observer(() => {
 
   const startQuiz = (e: any) => {
     e.preventDefault()
+    store.resetQuiz()
     store.changeLoadingState(true)
     store.generateQuestionsSet()
   }

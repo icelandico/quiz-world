@@ -27,6 +27,13 @@ export class QuizStore {
 
   userScore: number = 0
 
+  resetQuiz() {
+    this.userAnswers = []
+    this.questions = []
+    this.currentQuestion = 0
+    this.userScore = 0
+  }
+
   nextQuestion() {
     this.currentQuestion += 1
   }

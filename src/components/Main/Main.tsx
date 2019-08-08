@@ -7,6 +7,7 @@ import QuestionTwoType from "./QuestionsCards/QuestionsTypeTwo/question-type-two
 import { MainContent, QuizContainer } from "./main-styles"
 import ScoreView from "./ScoreView/score-view"
 import "./main.css"
+import Loader from "./Loader/loader"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
@@ -14,15 +15,7 @@ const Main: React.FC = observer(() => {
   const maxQuestions = 5
 
   const renderLoading = () => {
-    return (
-      <div className="spinner">
-        <div className="rect1" />
-        <div className="rect2" />
-        <div className="rect3" />
-        <div className="rect4" />
-        <div className="rect5" />
-      </div>
-    )
+    return <Loader />
   }
 
   const renderQuestionOne = (q: any) => {

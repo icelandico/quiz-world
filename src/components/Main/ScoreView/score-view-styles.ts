@@ -1,17 +1,14 @@
 import styled from "styled-components"
 
-export const AnswerButton = styled.div`
-  padding: 0.5rem;
-  color: #000;
-  font-size: 2rem;
-  margin: 0 0.5rem;
-  border: 1px solid #ccc;
-  width: 100px;
-  font-size: 1.25rem;
-  text-align: center;
+export const ScoreContainer = styled.div`
+  margin-top: 2rem;
+`
 
-  &:hover {
-    background-color: #ccaa;
-    cursor: pointer;
-  }
+export const Answer = styled.span`
+  font-size: 1rem;
+  color: #228b22;
+`
+
+export const WrongAnswer = styled(Answer)`
+  color: #ff6347;
 `

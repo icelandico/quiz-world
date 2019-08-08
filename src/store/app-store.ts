@@ -108,7 +108,7 @@ export class QuizStore {
     const populationResults = await results()
     const countriesAndPopulation = countries.map((c, idx) => ({
       c,
-      population: populationResults[idx]
+      population: populationResults[idx] || 1000000
     }))
     return countriesAndPopulation
   }

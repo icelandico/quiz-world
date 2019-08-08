@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { observer } from "mobx-react-lite"
-import { TimeContainer, TimeText } from "./time-indicator-styles"
+import { TimeContainer, TimeText, TimeLeft } from "./time-indicator-styles"
 import QuizStore from "../../../store/app-store"
 
 const TimeIndicator: React.FC = observer(() => {
@@ -24,7 +24,7 @@ const TimeIndicator: React.FC = observer(() => {
   return (
     <TimeContainer>
       <TimeText>Time left</TimeText>
-      <TimeText>{checkTimer()}</TimeText>
+      <TimeLeft>{checkTimer()}</TimeLeft>
     </TimeContainer>
   )
 })

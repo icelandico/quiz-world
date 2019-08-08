@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const ButtonDiv = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 1rem;
 `
 
 export const StartButton = styled.button`

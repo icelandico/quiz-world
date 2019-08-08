@@ -51,6 +51,7 @@ const Main: React.FC = observer(() => {
   return (
     <MainContent>
       <ButtonContainer />
+      {store.quizStarted && <TimeIndicator />}
       <QuizContainer>
         {store.currentQuestion < maxQuestions && timer > 0 ? (
           <div>
@@ -62,7 +63,6 @@ const Main: React.FC = observer(() => {
           renderScoreView()
         )}
       </QuizContainer>
-      {store.quizStarted && <TimeIndicator />}
     </MainContent>
   )
 })

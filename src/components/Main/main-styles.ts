@@ -5,5 +5,9 @@ export const MainContent = styled.div`
 `
 
 export const QuizContainer = styled.div`
-  margin-top: 2rem;
+  margin-top: 0;
+
+  @media (min-width: 768px) {
+    margin-top: 2rem;
+  }
 `

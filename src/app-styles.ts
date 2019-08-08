@@ -5,7 +5,7 @@ export const AppContainer = styled.div`
   flex-direction: column;
   text-align: center;
   background-color: #ccc;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 `

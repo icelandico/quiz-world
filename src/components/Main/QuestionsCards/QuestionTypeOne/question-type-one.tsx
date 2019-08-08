@@ -1,34 +1,24 @@
-import React, { useContext } from "react"
+import React from "react"
 import {
   QuestionContainer,
   AnswersContainer,
-  SingleAnswer,
   QuestionTitle
 } from "./question-type-one-styles"
-import QuizStore from "../../../../store/app-store"
+import AnswerCard from "../AnswerCard/answer-card"
 
 interface IProps {
   country: string
   answers: number[]
 }
 const QuestionTypeOne: React.FC<IProps> = props => {
-  const store = useContext(QuizStore)
   const { country, answers } = props
-
-  const handleNextQuestion = () => {
-    store.nextQuestion()
-  }
 
   return (
     <QuestionContainer>
       <QuestionTitle>What's the population of the {country}</QuestionTitle>
       <AnswersContainer>
         {answers.map((answer, idx) => {
-          return (
-            <SingleAnswer key={idx} onClick={handleNextQuestion}>
-              {answer}
-            </SingleAnswer>
-          )
+          return <AnswerCard answer={answer} idx={idx} key={idx} />
         })}
       </AnswersContainer>
     </QuestionContainer>

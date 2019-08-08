@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const QuestionContainer = styled.div`
   padding: 1rem;
-  background-color: #677db7;
+  background-color: #639aa5;
   font-size: 1rem;
   color: #fff;
   border: none;

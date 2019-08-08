@@ -6,7 +6,7 @@ export const ButtonDiv = styled.div`
 
 export const StartButton = styled.button`
   padding: 1rem;
-  background-color: #677db7;
+  background-color: #f79393;
   font-size: 1rem;
   color: #fff;
   border: none;

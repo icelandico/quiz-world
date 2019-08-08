@@ -13,7 +13,6 @@ const AnswerCard: React.FC<IProps> = props => {
   const { questionId, idx, answer } = props
 
   const handleNextQuestion = (id: number, userAnswer: number) => {
-    console.log(userAnswer)
     store.checkCorrect(id, userAnswer)
     store.addUserAnswer(userAnswer)
     store.nextQuestion()

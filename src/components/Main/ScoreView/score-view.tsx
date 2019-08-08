@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useContext } from "react"
 import { observer } from "mobx-react-lite"
 import QuizStore from "../../../store/app-store"
 import { Answer, WrongAnswer } from "./score-view-styles"

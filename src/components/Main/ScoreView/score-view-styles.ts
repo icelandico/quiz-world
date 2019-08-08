@@ -7,8 +7,9 @@ export const ScoreContainer = styled.div`
 export const Answer = styled.span`
   font-size: 1rem;
   color: #228b22;
+  font-weight: 700;
 `
 
 export const WrongAnswer = styled(Answer)`
-  color: #ff6347;
+  color: #e87662;
 `

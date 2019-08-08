@@ -3,15 +3,19 @@ import { createContext } from "react"
 
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"
 const API_COUNTRIES = "http://54.72.28.201:80/1.0/countries"
-
 const API_POPULATION = "http://54.72.28.201:80/1.0/population/"
 
 interface IQuestion {
   id: number
   type: number
-  answers: number | string[]
+  answers: number[] | string[]
   correct: number
   country: string
+}
+
+interface ICountry {
+  c: string
+  population: number
 }
 
 export class QuizStore {
@@ -31,12 +35,14 @@ export class QuizStore {
 
   timer: number = 20
 
+  initialTime: number = 20
+
   resetQuiz() {
     this.userAnswers = []
     this.questions = []
     this.currentQuestion = 0
     this.userScore = 0
-    this.timer = 20
+    this.timer = this.initialTime
     this.quizStarted = false
   }
 
@@ -143,7 +149,6 @@ export class QuizStore {
       )
     }
     const q: IQuestion[] = await questionsSet()
-    console.log(q)
     this.quizStarted = true
     this.questions = q
   }
@@ -176,7 +181,7 @@ export class QuizStore {
     return questionObj
   }
 
-  defineBiggestPopul(countries: any[]) {
+  defineBiggestPopul(countries: ICountry[]) {
     const sortByPopulation = [...countries].sort((a, b) =>
       a.population < b.population ? 1 : -1
     )

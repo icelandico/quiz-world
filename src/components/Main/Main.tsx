@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext } from "react"
 import { observer } from "mobx-react-lite"
 import ButtonContainer from "./ButtonContainer/button-container"
 import QuizStore from "../../store/app-store"
@@ -10,6 +10,14 @@ import "./main.css"
 import Loader from "./Loader/loader"
 import TimeIndicator from "./TimeIndicator/time-indicator"
 
+interface IQuestion {
+  id: number
+  type: number
+  answers: any[]
+  correct: number
+  country: string
+}
+
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
   const { questions, currentQuestion, loading, timer } = store
@@ -19,7 +27,7 @@ const Main: React.FC = observer(() => {
     return <Loader />
   }
 
-  const renderQuestionOne = (q: any) => {
+  const renderQuestionOne = (q: IQuestion) => {
     return (
       <>
         <QuestionOneType id={q.id} country={q.country} answers={q.answers} />
@@ -27,7 +35,7 @@ const Main: React.FC = observer(() => {
     )
   }
 
-  const renderQuestionTwo = (q: any) => {
+  const renderQuestionTwo = (q: IQuestion) => {
     return (
       <>
         <QuestionTwoType id={q.id} answers={q.answers} />
@@ -35,11 +43,11 @@ const Main: React.FC = observer(() => {
     )
   }
 
-  const renderQuestion = (q: any) => {
+  const renderQuestion = (q: IQuestion) => {
     return q.type === 1 ? renderQuestionOne(q) : renderQuestionTwo(q)
   }
 
-  const defineQuestion = (q: any) => {
+  const defineQuestion = (q: IQuestion) => {
     return questions.length ? renderQuestion(q) : null
   }
 

@@ -7,7 +7,7 @@ const ButtonContainer: React.FC = observer(() => {
   const store = useContext(QuizStore)
   const { quizStarted } = store
 
-  const startQuiz = (e: any) => {
+  const startQuiz = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
     store.resetQuiz()
     store.changeLoadingState(true)

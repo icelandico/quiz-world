@@ -6,27 +6,31 @@ const API_COUNTRIES = "http://54.72.28.201:80/1.0/countries"
 
 const API_POPULATION = "http://54.72.28.201:80/1.0/population/"
 
-interface IStore {
-  countries: string[]
-  loading: boolean
-  userAnswers: number[]
-  questions: any[]
-  currentQuestion: number
+interface IQuestion {
+  id: number
+  type: number
+  answers: number | string[]
+  correct: number
+  country: string
 }
 
-export class QuizStore implements IStore {
-  userAnswers = []
+export class QuizStore {
+  userAnswers: number[] = []
 
-  countries = []
+  countries: string[] = []
 
   questions: any[] = []
 
-  loading = false
+  loading: boolean = false
 
   currentQuestion = 0
 
   nextQuestion() {
     this.currentQuestion += 1
+  }
+
+  addUserAnswer(answer: number) {
+    this.userAnswers.push(answer)
   }
 
   fetchCountries() {
@@ -117,8 +121,7 @@ export class QuizStore implements IStore {
         )
       )
     }
-    const q: any[] = await questionsSet()
-    console.log(q)
+    const q: IQuestion[] = await questionsSet()
     this.questions = q
   }
 

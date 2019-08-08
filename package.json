@@ -1,6 +1,7 @@
 {
   "name": "quiz-world",
   "version": "0.1.0",
+  "homepage": "https://icelandico.github.io/quiz-world/",
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.17",

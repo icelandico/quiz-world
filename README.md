@@ -1,4 +1,4 @@
-##Simple Quiz. Guess the population of countries, define which country has bigger population. Get fun.App
+### Simple Quiz. Guess the population of countries, define which country has bigger population. Get fun.
 
 Link to project: [Population Quiz App](https://icelandico.github.io/quiz-world/)
 

@@ -14,18 +14,26 @@ const ScoreView: React.FC = observer(() => {
     return <WrongAnswer>Wrong</WrongAnswer>
   }
 
+  const giveAnswers = (answers: number[]) => {
+    return answers.map((answer, idx) => {
+      return (
+        <div key={idx}>
+          Question {idx + 1}
+          <p>{checkCorrect(idx, answer)}</p>
+        </div>
+      )
+    })
+  }
+
+  const renderUserAnswers = (answers: number[]) => {
+    return answers.length > 0 ? giveAnswers(answers) : "No answers given..."
+  }
+
   return (
     <div>
-      Your answers are:
-      {userAnswers.map((answer, idx) => {
-        return (
-          <div key={idx}>
-            Question {idx + 1}
-            <p>{checkCorrect(idx, answer)}</p>
-          </div>
-        )
-      })}
-      Your score is:
+      <h2>Your answers: </h2>
+      {renderUserAnswers(userAnswers)}
+      <p>Your score is:</p>
       <h1>{store.userScore}</h1>
     </div>
   )

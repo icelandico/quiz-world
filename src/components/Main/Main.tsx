@@ -2,13 +2,12 @@ import React, { useContext } from "react"
 import { observer } from "mobx-react-lite"
 import ButtonContainer from "./ButtonContainer/button-container"
 import QuizStore from "../../store/app-store"
-import QuestionOneType from "./QuestionsCards/QuestionTypeOne/question-type-one"
-import QuestionTwoType from "./QuestionsCards/QuestionsTypeTwo/question-type-two"
 import { MainContent, QuizContainer } from "./main-styles"
 import ScoreView from "./ScoreView/score-view"
 import "./main.css"
 import Loader from "./Loader/loader"
 import TimeIndicator from "./TimeIndicator/time-indicator"
+import QuestionView from "./QuestionsCards/QuestionView/question-view"
 
 interface IQuestion {
   id: number
@@ -26,25 +25,15 @@ const Main: React.FC = observer(() => {
   const renderLoading = () => {
     return <Loader />
   }
-
-  const renderQuestionOne = (q: IQuestion) => {
-    return (
-      <>
-        <QuestionOneType id={q.id} country={q.country} answers={q.answers} />
-      </>
-    )
-  }
-
-  const renderQuestionTwo = (q: IQuestion) => {
-    return (
-      <>
-        <QuestionTwoType id={q.id} answers={q.answers} />
-      </>
-    )
-  }
-
   const renderQuestion = (q: IQuestion) => {
-    return q.type === 1 ? renderQuestionOne(q) : renderQuestionTwo(q)
+    return (
+      <QuestionView
+        type={q.type}
+        id={q.id}
+        country={q.country}
+        answers={q.answers}
+      />
+    )
   }
 
   const defineQuestion = (q: IQuestion) => {

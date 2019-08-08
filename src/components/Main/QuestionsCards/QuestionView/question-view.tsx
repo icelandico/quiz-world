@@ -3,19 +3,28 @@ import {
   QuestionContainer,
   AnswersContainer,
   QuestionTitle
-} from "./question-type-two-styles"
+} from "./question-view-styles"
 import AnswerCard from "../AnswerCard/answer-card"
 
 interface IProps {
   id: number
+  country?: string
   answers: number[]
+  type: number
 }
-const QuestionTypeTwo: React.FC<IProps> = props => {
-  const { id, answers } = props
+
+const QuestionView: React.FC<IProps> = props => {
+  const { id, country, answers, type } = props
+
+  const displayQuestionTitle = () => {
+    return type === 1
+      ? `What's the population of the ${country}`
+      : "Which country has the biggest population?"
+  }
 
   return (
     <QuestionContainer>
-      <QuestionTitle>Which country has the biggest population?</QuestionTitle>
+      <QuestionTitle>{displayQuestionTitle()}</QuestionTitle>
       <AnswersContainer>
         {answers.map((answer, idx) => {
           return (
@@ -27,4 +36,4 @@ const QuestionTypeTwo: React.FC<IProps> = props => {
   )
 }
 
-export default QuestionTypeTwo
+export default QuestionView

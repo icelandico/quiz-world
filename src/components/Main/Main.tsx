@@ -11,7 +11,7 @@ import Loader from "./Loader/loader"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
-  const { questions, currentQuestion, loading } = store
+  const { questions, currentQuestion, loading, time } = store
   const maxQuestions = 5
 
   const renderLoading = () => {
@@ -56,6 +56,10 @@ const Main: React.FC = observer(() => {
           <ScoreView />
         )}
       </QuizContainer>
+      <div>
+        <p>Time left</p>
+        <p>{time}</p>
+      </div>
     </MainContent>
   )
 })

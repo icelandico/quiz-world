@@ -27,11 +27,19 @@ export class QuizStore {
 
   userScore: number = 0
 
+  time: number = 20
+
   resetQuiz() {
     this.userAnswers = []
     this.questions = []
     this.currentQuestion = 0
     this.userScore = 0
+  }
+
+  startTimer() {
+    const timer = setInterval(() => {
+      this.time -= 1
+    }, 1000)
   }
 
   nextQuestion() {
@@ -138,6 +146,7 @@ export class QuizStore {
     }
     const q: IQuestion[] = await questionsSet()
     console.log(q)
+    this.startTimer()
     this.questions = q
   }
 
@@ -188,7 +197,9 @@ decorate(QuizStore, {
   questions: observable,
   currentQuestion: observable,
   generateQuestionsStructure: action,
-  addUserAnswer: action
+  addUserAnswer: action,
+  startTimer: action,
+  time: observable
 })
 
 export default createContext(new QuizStore())

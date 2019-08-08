@@ -6,7 +6,7 @@ const Header: React.FC = () => {
     <header>
       <MainHeader>World Population Quiz</MainHeader>
       <HeaderDescription>
-        Your objective is to answer the questions! There is two kind of them.
+        Your objective is to answer the questions! There are two kind of them.
         For each correct answer you get 1 point. Hurry up because you have only
         20 seconds to finish this task.
       </HeaderDescription>

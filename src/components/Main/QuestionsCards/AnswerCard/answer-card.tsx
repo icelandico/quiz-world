@@ -13,9 +13,17 @@ const AnswerCard: React.FC<IProps> = props => {
   const { questionId, idx, answer } = props
 
   const handleNextQuestion = (id: number, userAnswer: number) => {
+    console.log(userAnswer)
     store.checkCorrect(id, userAnswer)
     store.addUserAnswer(userAnswer)
     store.nextQuestion()
+  }
+
+  const checkAnswerLength = (answer: string | number) => {
+    if (typeof answer === "string") {
+      return answer.length > 10
+    }
+    return false
   }
 
   return (
@@ -23,6 +31,7 @@ const AnswerCard: React.FC<IProps> = props => {
       <AnswerButton
         key={idx}
         onClick={() => handleNextQuestion(questionId, idx)}
+        longText={checkAnswerLength(answer)}
       >
         {answer}
       </AnswerButton>

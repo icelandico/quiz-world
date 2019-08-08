@@ -19,13 +19,14 @@ export const AnswersContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 export const SingleAnswer = styled.div`
   padding: 0.5rem;
   color: #000;
   font-size: 2rem;
-  margin: 0 0.5rem;
+  margin: 1rem 0.5rem;
   border: 1px solid #ccc;
   width: 100px;
   font-size: 1.25rem;

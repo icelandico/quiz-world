@@ -1,14 +1,15 @@
 import styled from "styled-components"
 
-export const AnswerButton = styled.div`
+export const AnswerButton = styled.div<{ longText: boolean }>`
   padding: 0.5rem;
   color: #000;
-  font-size: 2rem;
-  margin: 0 0.5rem;
+  margin: 1rem 0.5rem;
   border: 1px solid #ccc;
-  width: 100px;
-  font-size: 1.25rem;
+  width: 200px;
+  font-size: ${props => (props.longText ? "1rem" : "1.25rem")};
   text-align: center;
+  height: 40px;
+  line-height: 40px;
 
   &:hover {
     background-color: #ccaa;

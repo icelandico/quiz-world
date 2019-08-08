@@ -19,6 +19,10 @@ export const AnswersContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+
+  @media screen and(min-width: 768px) {
+  }
 `
 
 export const SingleAnswer = styled.div`
@@ -30,6 +34,7 @@ export const SingleAnswer = styled.div`
   width: 100px;
   font-size: 1.25rem;
   text-align: center;
+  flex-wrap: wrap;
 
   &:hover {
     background-color: #ccaa;

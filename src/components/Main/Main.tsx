@@ -5,10 +5,12 @@ import QuizStore from "../../store/app-store"
 import QuestionOneType from "./QuestionsCards/QuestionTypeOne/question-type-one"
 import QuestionTwoType from "./QuestionsCards/QuestionsTypeTwo/question-type-two"
 import { MainContent, QuestionsContainer } from "./main-styles"
+import ScoreView from "./ScoreView/score-view"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
-  const { questions, currentQuestion } = store
+  const { questions, currentQuestion, loading } = store
+  const maxQuestions = 5
   const renderLoading = () => {
     return <h2>LOADIN</h2>
   }
@@ -16,7 +18,7 @@ const Main: React.FC = observer(() => {
   const renderQuestionOne = (q: any) => {
     return (
       <>
-        <QuestionOneType country={q.country} answers={q.answers} />
+        <QuestionOneType id={q.id} country={q.country} answers={q.answers} />
       </>
     )
   }
@@ -24,7 +26,7 @@ const Main: React.FC = observer(() => {
   const renderQuestionTwo = (q: any) => {
     return (
       <>
-        <QuestionTwoType answers={q.answers} />
+        <QuestionTwoType id={q.id} answers={q.answers} />
       </>
     )
   }
@@ -33,18 +35,24 @@ const Main: React.FC = observer(() => {
     return q.type === 1 ? renderQuestionOne(q) : renderQuestionTwo(q)
   }
 
+  const defineQuestion = (q: any) => {
+    return questions.length ? renderQuestion(q) : null
+  }
+
   return (
     <MainContent>
       <ButtonContainer />
-      <QuestionsContainer>
-        <div>
-          {questions.length === 0 && store.loading
-            ? renderLoading()
-            : questions.length > 0
-              ? renderQuestion(questions[currentQuestion])
-              : null}
-        </div>
-      </QuestionsContainer>
+      {store.currentQuestion < maxQuestions ? (
+        <QuestionsContainer>
+          <div>
+            {loading && !questions.length
+              ? renderLoading()
+              : defineQuestion(questions[currentQuestion])}
+          </div>
+        </QuestionsContainer>
+      ) : (
+        <ScoreView />
+      )}
     </MainContent>
   )
 })

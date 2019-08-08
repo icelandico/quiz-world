@@ -27,19 +27,16 @@ export class QuizStore {
 
   userScore: number = 0
 
-  time: number = 20
+  quizStarted: boolean = false
+
+  timer: number = 20
 
   resetQuiz() {
     this.userAnswers = []
     this.questions = []
     this.currentQuestion = 0
     this.userScore = 0
-  }
-
-  startTimer() {
-    const timer = setInterval(() => {
-      this.time -= 1
-    }, 1000)
+    this.timer = 20
   }
 
   nextQuestion() {
@@ -146,7 +143,7 @@ export class QuizStore {
     }
     const q: IQuestion[] = await questionsSet()
     console.log(q)
-    this.startTimer()
+    this.quizStarted = true
     this.questions = q
   }
 
@@ -188,6 +185,10 @@ export class QuizStore {
     )
     return index
   }
+
+  timerChange() {
+    this.timer -= 1
+  }
 }
 
 decorate(QuizStore, {
@@ -198,8 +199,10 @@ decorate(QuizStore, {
   currentQuestion: observable,
   generateQuestionsStructure: action,
   addUserAnswer: action,
-  startTimer: action,
-  time: observable
+  resetQuiz: action,
+  quizStarted: observable,
+  timer: observable,
+  timerChange: action
 })
 
 export default createContext(new QuizStore())

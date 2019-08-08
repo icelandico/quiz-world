@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { observer } from "mobx-react-lite"
 import ButtonContainer from "./ButtonContainer/button-container"
 import QuizStore from "../../store/app-store"
@@ -8,10 +8,11 @@ import { MainContent, QuizContainer } from "./main-styles"
 import ScoreView from "./ScoreView/score-view"
 import "./main.css"
 import Loader from "./Loader/loader"
+import TimeIndicator from "./TimeIndicator/time-indicator"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
-  const { questions, currentQuestion, loading, time } = store
+  const { questions, currentQuestion, loading, timer } = store
   const maxQuestions = 5
 
   const renderLoading = () => {
@@ -42,24 +43,26 @@ const Main: React.FC = observer(() => {
     return questions.length ? renderQuestion(q) : null
   }
 
+  const renderScoreView = () => {
+    store.quizStarted = false
+    return <ScoreView />
+  }
+
   return (
     <MainContent>
       <ButtonContainer />
       <QuizContainer>
-        {store.currentQuestion < maxQuestions ? (
+        {store.currentQuestion < maxQuestions && timer > 0 ? (
           <div>
             {loading && !questions.length
               ? renderLoading()
               : defineQuestion(questions[currentQuestion])}
           </div>
         ) : (
-          <ScoreView />
+          renderScoreView()
         )}
       </QuizContainer>
-      <div>
-        <p>Time left</p>
-        <p>{time}</p>
-      </div>
+      {store.quizStarted && <TimeIndicator />}
     </MainContent>
   )
 })

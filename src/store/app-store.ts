@@ -37,6 +37,7 @@ export class QuizStore {
     this.currentQuestion = 0
     this.userScore = 0
     this.timer = 20
+    this.quizStarted = false
   }
 
   nextQuestion() {

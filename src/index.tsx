@@ -4,6 +4,7 @@ import { Provider } from "mobx-react"
 import App from "./App"
 import * as serviceWorker from "./serviceWorker"
 import { QuizStore } from "./store/app-store"
+import "./index.css"
 
 const Root = (
   <Provider quizStore={QuizStore}>

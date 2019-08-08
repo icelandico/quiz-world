@@ -4,15 +4,25 @@ import ButtonContainer from "./ButtonContainer/button-container"
 import QuizStore from "../../store/app-store"
 import QuestionOneType from "./QuestionsCards/QuestionTypeOne/question-type-one"
 import QuestionTwoType from "./QuestionsCards/QuestionsTypeTwo/question-type-two"
-import { MainContent, QuestionsContainer } from "./main-styles"
+import { MainContent, QuizContainer } from "./main-styles"
 import ScoreView from "./ScoreView/score-view"
+import "./main.css"
 
 const Main: React.FC = observer(() => {
   const store = useContext(QuizStore)
   const { questions, currentQuestion, loading } = store
   const maxQuestions = 5
+
   const renderLoading = () => {
-    return <h2>LOADIN</h2>
+    return (
+      <div className="spinner">
+        <div className="rect1" />
+        <div className="rect2" />
+        <div className="rect3" />
+        <div className="rect4" />
+        <div className="rect5" />
+      </div>
+    )
   }
 
   const renderQuestionOne = (q: any) => {
@@ -42,17 +52,17 @@ const Main: React.FC = observer(() => {
   return (
     <MainContent>
       <ButtonContainer />
-      {store.currentQuestion < maxQuestions ? (
-        <QuestionsContainer>
+      <QuizContainer>
+        {store.currentQuestion < maxQuestions ? (
           <div>
             {loading && !questions.length
               ? renderLoading()
               : defineQuestion(questions[currentQuestion])}
           </div>
-        </QuestionsContainer>
-      ) : (
-        <ScoreView />
-      )}
+        ) : (
+          <ScoreView />
+        )}
+      </QuizContainer>
     </MainContent>
   )
 })
